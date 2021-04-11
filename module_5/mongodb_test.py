@@ -1,6 +1,6 @@
-import MongoClient
+from pymongo import MongoClient
 
-url = "mongodb+srv://admin:<password>@cluster0.f2jka.mongodb.net/test";
+url = "mongodb+srv://admin:admin@cluster0.f2jka.mongodb.net/pytech?retryWrites=true&w=majority"
 client = MongoClient(url)
 db = client.pytech
-print(db.list_collection_names);
+print(db.list_collection_names)
