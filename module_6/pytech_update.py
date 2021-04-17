@@ -1,5 +1,6 @@
 '''
 This program will connect to mongodb database and return the new updated lastname to Fred
+https://github.com/kaymonCodeM/csd-310.git
 
 Kaymon McCain
 Assignment 6.2
@@ -33,12 +34,12 @@ collection.update_one(
 # Print out Fed new last name
 print("-- DISPLAYING STUDENT DOCUMENT 1007 --")
 docFred = collection.find_one({"student_id": 1007})
-student_id = docFred["student_id"]
-student_first_name = docFred["first_name"]
-student_last_name = docFred["last_name"]
-print(f"Student ID: {student_id}")
-print(f"First Name: {student_first_name}")
-print(f"Last Name: {student_last_name}")
+fred_student_id = docFred["student_id"]
+fred_student_first_name = docFred["first_name"]
+fred_student_last_name = docFred["last_name"]
+print(f"Student ID: {fred_student_id}")
+print(f"First Name: {fred_student_first_name}")
+print(f"Last Name: {fred_student_last_name}")
 print()
 
 # Update Fed document last_name back to Morris
