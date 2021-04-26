@@ -1,3 +1,10 @@
+'''
+Kaymon McCain
+Assignment 8.3
+4/25/2021
+
+https://github.com/kaymonCodeM/csd-310.git
+'''
 import mysql.connector
 from mysql.connector import errorcode
 
