@@ -117,7 +117,7 @@ def add_book_to_wishlist(cursor, user_id, book_id):
             "INSERT INTO wishlist(user_id,book_id) VALUES ({},{});".format(user_id, book_id))
         cursor.execute(insertWishlist)
     except mysql.connector.Error:
-        print("Invalid Entry!")
+        print("Invalid Entry Database Error!")
     return
 
 # This function will show all the books in the users wishlist
@@ -144,7 +144,7 @@ def show_wishlist(cursor, user_id):
 def wishlist_menu(user_id):
     userInput = ''
     while userInput != 'mm':
-        print("\nWISHLIST MENU!")
+        print("\nWISHLIST MENU")
         userInput = input(
             "\nPlease enter one of the following:\nsw = Show Wishlist\nab = Add Book\nmm = Main Menu\n")
 
@@ -176,7 +176,7 @@ def wishlist_menu(user_id):
 
 
 def validate_user():
-    accountNumber = input("Please give your user ID number:\n")
+    accountNumber = input("\nPlease give your user ID number:\n")
     db = connectSQL()
     cursor = db.cursor()
 
@@ -190,7 +190,7 @@ def validate_user():
             return user[0]
     # SQL exception with back input
     except mysql.connector.Error:
-        print("Invalid Entry!")
+        print("Invalid Entry Database Error!")
     # No user ID
     return
 
