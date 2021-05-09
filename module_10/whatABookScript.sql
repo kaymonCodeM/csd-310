@@ -58,5 +58,6 @@ INSERT INTO user(first_name,last_name) VALUES ('Kaymon', 'McCain');
 
 -- INSERT WISHLIST
 INSERT INTO wishlist(user_id,book_id) VALUES (1,7);
-INSERT INTO wishlist(user_id,book_id) VALUES (2,5);
+INSERT INTO wishlist(user_id,book_id) VALUES (2,6);
 INSERT INTO wishlist(user_id,book_id) VALUES (3,1);
+
