@@ -14,7 +14,7 @@ from mysql.connector import errorcode
 def connectSQL():
     mydb = mysql.connector.connect()
     try:
-        config = {"host": "localhost", "user": "root", "password": "ShowMeTheShadow402!",
+        config = {"host": "localhost", "user": "whatabook_user", "password": "MySQL8IsGreat!",
                   "database": "whatabook", "raise_on_warnings": True}
         mydb = mysql.connector.connect(**config)
     except mysql.connector.Error as err:
