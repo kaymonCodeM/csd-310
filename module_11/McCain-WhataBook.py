@@ -5,6 +5,7 @@ Assignment 11.2
 
 https://github.com/kaymonCodeM/csd-310.git
 '''
+import sys
 import mysql.connector
 from mysql.connector import errorcode
 
@@ -65,27 +66,27 @@ def show_menu():
     try:
         print("\nMAIN MENU")
         userInput = input(
-            "\nPlease enter one of the following:\nvb = View Books\nvs = View Store Locations\nma = My Account\nex = Exit\n")
+            "\nPlease enter one of the following:\n1 = View Books\n2 = View Store Locations\n3 = My Account\n4 = Exit\n")
     except ValueError:
         print("Please give valid input!")
 
     # View Book will show books
-    if userInput == 'vb':
+    if userInput == '1':
         db = connectSQL()
         cursor = db.cursor()
         showbooks(cursor)
         db.close()
     # View Store Locations will show store locations
-    elif userInput == 'vs':
+    elif userInput == '2':
         db = connectSQL()
         cursor = db.cursor()
         show_locations(cursor)
         db.close()
     # My Account will return ma to proceed to account menu
-    elif userInput == 'ma':
-        return 'ma'
+    elif userInput == '3':
+        return '3'
     # Back Input
-    elif(userInput != 'ex'):
+    elif(userInput != '4'):
         print("Please give a valid input!")
     # Return exit
     return userInput
@@ -143,19 +144,19 @@ def show_wishlist(cursor, user_id):
 
 def wishlist_menu(user_id):
     userInput = ''
-    while userInput != 'mm':
+    while userInput != '3':
         print("\nWISHLIST MENU")
         userInput = input(
-            "\nPlease enter one of the following:\nsw = Show Wishlist\nab = Add Book\nmm = Main Menu\n")
+            "\nPlease enter one of the following:\n1 = Show Wishlist\n2 = Add Book\n3 = Main Menu\n")
 
         # Show wishlist will show the users wishlist
-        if userInput == 'sw':
+        if userInput == '1':
             db = connectSQL()
             cursor = db.cursor()
             show_wishlist(cursor, user_id)
             db.close()
         # Add book will add a book to a users wishlist
-        elif userInput == 'ab':
+        elif userInput == '2':
             # Fist display the books to add
             db = connectSQL()
             cursor = db.cursor()
@@ -167,7 +168,7 @@ def wishlist_menu(user_id):
             db.commit()
             db.close()
         # Back Input
-        elif userInput != 'mm':
+        elif userInput != '3':
             print("Invalid Entry")
     # Exit back to Main Menu
     return
@@ -213,10 +214,10 @@ def show_account_menu():
 
 # This is the main function of the program which access the menu functionality
 menu = ''
-while menu != 'ex':
+while menu != '4':
     # Main Menu
     menu = show_menu()
 
     # Returned My Account from menu's input to proceed to account menu
-    if menu == 'ma':
+    if menu == '3':
         show_account_menu()
