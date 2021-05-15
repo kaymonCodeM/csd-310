@@ -8,6 +8,7 @@ https://github.com/kaymonCodeM/csd-310.git
 import sys
 import mysql.connector
 from mysql.connector import errorcode
+from mysql.connector import IntegrityError
 
 # This function will make a connection to mySQL database and return the connection
 
@@ -87,7 +88,7 @@ def show_menu():
         return '3'
     # Back Input
     elif(userInput != '4'):
-        print("Please give a valid input!")
+        print("INVALID ENTRY")
     # Return exit
     return userInput
 
@@ -117,8 +118,12 @@ def add_book_to_wishlist(cursor, user_id, book_id):
         insertWishlist = (
             "INSERT INTO wishlist(user_id,book_id) VALUES ({},{});".format(user_id, book_id))
         cursor.execute(insertWishlist)
+    # Unique Constraint from database
+    except mysql.connector.IntegrityError:
+        print("ERROR: DUPLICATE ENTRY")
+    # Bad input
     except mysql.connector.Error:
-        print("Invalid Entry Database Error!")
+        print("DATABASE ERROR: INVALID ENTRY")
     return
 
 # This function will show all the books in the users wishlist
@@ -169,7 +174,7 @@ def wishlist_menu(user_id):
             db.close()
         # Back Input
         elif userInput != '3':
-            print("Invalid Entry")
+            print("ERROR: INVALID ENTRY")
     # Exit back to Main Menu
     return
 
@@ -191,7 +196,7 @@ def validate_user():
             return user[0]
     # SQL exception with back input
     except mysql.connector.Error:
-        print("Invalid Entry Database Error!")
+        print("DATABASE ERROR: INVALID ENTRY")
     # No user ID
     return
 
@@ -204,7 +209,7 @@ def show_account_menu():
 
     # No user ID so proceed to Main Menu
     if accountNumber == None:
-        print("Invalid User try again!")
+        print("ERROR: INVALID USER")
         return
     # Valid User ID to proceed to wishlist menu
     else:
