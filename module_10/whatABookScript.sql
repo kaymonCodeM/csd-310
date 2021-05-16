@@ -36,7 +36,7 @@ user_id INT NOT NULL,
 CONSTRAINT fk_user FOREIGN KEY(user_id) REFERENCES user(user_id),
 book_id INT NOT NULL,
 CONSTRAINT fk_book FOREIGN KEY(book_id) REFERENCES book(book_id),
-CONSTRAINT unique_constraint UNIQUE(user_id,book_id)
+CONSTRAINT unique_fk UNIQUE(book_id,user_id)
 );
 
 CREATE TABLE store(
